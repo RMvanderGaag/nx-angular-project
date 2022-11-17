@@ -1,0 +1,22 @@
+<div class="container">
+    <a class="btn btn-primary my-2">Create user</a>
+    <h2 class="text-center">User overview</h2>
+    <hr>
+    <table class="table table-striped">
+        <thead>
+            <th>Id</th>
+            <th>Name</th>
+            <th>Email</th>
+        </thead>
+        <tbody>
+            <tr *ngFor="let user of users">
+                <td>{{ user.id }}</td>
+                <td>{{ user.name }}</td>
+                <td>{{ user.email }}</td>
+                <td><a routerLink="{{user.id}}" class="underline">Details</a></td>
+                <td><a class="underline">Edit</a></td>
+                <td><a class="underline">Delete</a></td>
+            </tr>
+        </tbody>
+    </table>
+</div>

@@ -1,0 +1,19 @@
+<div class="container">
+    <a class="btn btn-primary my-2" routerLink="../">Terug naar overzicht</a>
+    <div class="w-25 mx-auto">
+        <h2 class="text-center">User details</h2>
+        <hr>
+        <div class="d-flex justify-content-between">
+            <div>
+                <h3>Name:</h3>
+                <p>Email:</p>
+                <p>City:</p>
+            </div>
+            <div>
+                <h3>{{user!.name}}</h3>
+                <p>{{user!.email}}</p>
+                <p>{{user!.city}}</p>
+            </div>
+        </div>
+    </div>
+</div>
