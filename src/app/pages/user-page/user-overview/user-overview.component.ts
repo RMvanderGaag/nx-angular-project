@@ -16,4 +16,8 @@ export class UserOverviewComponent implements OnInit {
     this.users = this.userService.getUsers();
   }
 
+  deleteUser(id: number) {
+    this.userService.deleteUser(id)
+  }
+
 }

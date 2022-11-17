@@ -36,4 +36,9 @@ export class UserService {
   getUserById(id: number): User {
     return this.users.filter(x => x.id == id)[0];
   }
+
+  deleteUser(id: number) {
+    var userToDelete = this.users.findIndex((u) => u.id == id)
+    this.users.splice(userToDelete, 1);
+  }
 }
