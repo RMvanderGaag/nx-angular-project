@@ -6,8 +6,9 @@ import { UserOverviewComponent } from './pages/user-page/user-overview/user-over
 
 const routes: Routes = [
   { path: 'users', pathMatch: 'full', component: UserOverviewComponent },
+  { path: 'users/new', pathMatch: 'full', component: UserEditComponent },
   { path: 'users/:id', pathMatch: 'full', component: UserDetailComponent },
-  { path: 'users/new', pathMatch: 'full', component: UserEditComponent }
+  { path: 'users/:id/edit', pathMatch: 'full', component: UserEditComponent },
 ];
 
 @NgModule({

@@ -41,4 +41,16 @@ export class UserService {
     var userToDelete = this.users.findIndex((u) => u.id == id)
     this.users.splice(userToDelete, 1);
   }
+
+  addUser(user: User) {
+    this.users.push(user);
+  }
+
+  updateUser(user: User) {
+    this.users.forEach(u => {
+      if (u.id == user.id) {
+        u = user
+      }
+    });
+  }
 }

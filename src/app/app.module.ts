@@ -7,6 +7,7 @@ import { NavComponent } from './shared/nav/nav.component';
 import { UserOverviewComponent } from './pages/user-page/user-overview/user-overview.component';
 import { UserEditComponent } from './pages/user-page/user-edit/user-edit.component';
 import { UserDetailComponent } from './pages/user-page/user-detail/user-detail.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -14,11 +15,12 @@ import { UserDetailComponent } from './pages/user-page/user-detail/user-detail.c
     NavComponent,
     UserOverviewComponent,
     UserEditComponent,
-    UserDetailComponent
+    UserDetailComponent,
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

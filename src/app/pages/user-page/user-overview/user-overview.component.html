@@ -1,6 +1,8 @@
 <div class="container">
-    <a class="btn btn-primary my-2" routerLink="new">Create user</a>
-    <h2 class="text-center">User overview</h2>
+    <div class="d-flex justify-content-between mt-3">
+        <h2>User overview</h2>
+        <a class="btn btn-primary my-2" routerLink="new">Create user</a>
+    </div>
     <hr>
     <table class="table table-striped">
         <thead>
@@ -13,9 +15,11 @@
                 <td>{{ user.id }}</td>
                 <td>{{ user.name }}</td>
                 <td>{{ user.email }}</td>
-                <td><a routerLink="{{user.id}}" class="btn btn-primary">Details</a></td>
-                <td><a class="btn btn-warning">Edit</a></td>
-                <td><a (click)="deleteUser(user.id)" class=" btn btn-danger">Delete</a></td>
+                <td class="text-end">
+                    <a routerLink="{{user.id}}" class="btn btn-primary mx-2">Details</a>
+                    <a routerLink="{{user.id}}/edit" class="btn btn-warning mx-2">Edit</a>
+                    <a (click)="deleteUser(user.id)" class=" btn btn-danger mx-2">Delete</a>
+                </td>
             </tr>
         </tbody>
     </table>
