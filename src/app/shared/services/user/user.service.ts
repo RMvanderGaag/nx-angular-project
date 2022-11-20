@@ -10,23 +10,41 @@ export class UserService {
       id: 0,
       name: "Bert",
       city: "Breda",
-      email: "bert@mail.com"
+      email: "bert@mail.com",
+      birthday: new Date("05/07/1998")
     },
     {
       id: 1,
       name: "Jan",
       city: "Amsterdam",
-      email: "jan@mail.com"
+      email: "jan@mail.com",
+      birthday: new Date("05/07/1998")
     },
     {
       id: 2,
       name: "Simon",
       city: "Rotterdam",
-      email: "simon@mail.com"
+      email: "simon@mail.com",
+      birthday: new Date("05/07/1998")
     },
+    {
+      id: 3,
+      name: "Arjan",
+      city: "Texel",
+      email: "arjan@mail.com",
+      birthday: new Date("05/07/1998")
+    },
+    {
+      id: 4,
+      name: "Lisa",
+      city: "Tilburg",
+      email: "lisa@mail.com",
+      birthday: new Date("05/07/1998")
+    }
   ]
 
-  constructor() { }
+  constructor() {
+  }
 
   getUsers(): User[] {
     console.log(this.users.length + " users returned")
@@ -47,10 +65,8 @@ export class UserService {
   }
 
   updateUser(user: User) {
-    this.users.forEach(u => {
-      if (u.id == user.id) {
-        u = user
-      }
-    });
+    let editUser = this.users.findIndex((x) => x.id == user.id);
+    this.users[editUser] = user;
+    console.log(this.users);
   }
 }

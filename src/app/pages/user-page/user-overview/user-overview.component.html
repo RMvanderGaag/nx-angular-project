@@ -9,12 +9,14 @@
             <th>Id</th>
             <th>Name</th>
             <th>Email</th>
+            <th>Birthday</th>
         </thead>
         <tbody>
             <tr *ngFor="let user of users">
                 <td>{{ user.id }}</td>
                 <td>{{ user.name }}</td>
                 <td>{{ user.email }}</td>
+                <td>{{ user.birthday.toLocaleDateString() }}</td>
                 <td class="text-end">
                     <a routerLink="{{user.id}}" class="btn btn-primary mx-2">Details</a>
                     <a routerLink="{{user.id}}/edit" class="btn btn-warning mx-2">Edit</a>

@@ -28,6 +28,7 @@ export class UserEditComponent implements OnInit {
           name: "",
           email: "",
           city: "",
+          birthday: new Date()
         }
       }
     })
@@ -35,11 +36,16 @@ export class UserEditComponent implements OnInit {
 
   onSubmit(userForm: NgForm): void {
     if (this.isEdit) {
-      this.userService.updateUser(userForm.value)
+      let editUser = {
+        ...userForm.value,
+        birthday: new Date(userForm.value.birthday)
+      }
+      this.userService.updateUser(editUser)
     } else {
       let newUser = {
         id: this.userService.getUsers().length,
-        ...userForm.value
+        ...userForm.value,
+        birthday: new Date(userForm.value.birthday)
       };
       this.userService.addUser(newUser);
     }
