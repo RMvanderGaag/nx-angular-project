@@ -9,6 +9,7 @@ import { UserEditComponent } from './pages/user-page/user-edit/user-edit.compone
 import { UserDetailComponent } from './pages/user-page/user-detail/user-detail.component';
 import { FormsModule } from '@angular/forms';
 import { AboutComponent } from './pages/about-page/about/about.component';
+import { ConcertOverviewComponent } from './pages/concert-page/concert-overview/concert-overview.component';
 
 @NgModule({
   declarations: [
@@ -18,6 +19,7 @@ import { AboutComponent } from './pages/about-page/about/about.component';
     UserEditComponent,
     UserDetailComponent,
     AboutComponent,
+    ConcertOverviewComponent,
   ],
   imports: [
     BrowserModule,
