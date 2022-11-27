@@ -14,6 +14,11 @@ export class ConcertOverviewComponent implements OnInit {
 
   ngOnInit(): void {
     this.concerts = this.concertService.getConcerts();
+    console.log(this.concerts);
+  }
+
+  deleteConcert(id: number): void {
+    this.concertService.deleteConcert(id);
   }
 
 }

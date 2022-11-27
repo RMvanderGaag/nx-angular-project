@@ -53,4 +53,20 @@ export class ConcertService {
   getConcerts(): Concert[] {
     return this.concerts;
   }
+
+  getConcertById(id: number): Concert | null {
+    return this.concerts.find(c => c.id === id) ?? null;
+  }
+
+  deleteConcert(id: number): void {
+    this.concerts.splice(this.concerts.findIndex(c => c.id === id), 1);
+  }
+
+  addConcert(concert: Concert): void {
+    this.concerts.push(concert);
+  }
+
+  updateConcert(concert: Concert): void {
+    this.concerts[this.concerts.findIndex(c => c.id === concert.id)] = concert;
+  }
 }

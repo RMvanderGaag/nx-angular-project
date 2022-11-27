@@ -10,6 +10,8 @@ import { UserDetailComponent } from './pages/user-page/user-detail/user-detail.c
 import { FormsModule } from '@angular/forms';
 import { AboutComponent } from './pages/about-page/about/about.component';
 import { ConcertOverviewComponent } from './pages/concert-page/concert-overview/concert-overview.component';
+import { ConcertDetailComponent } from './pages/concert-page/concert-detail/concert-detail.component';
+import { ConcertEditComponent } from './pages/concert-page/concert-edit/concert-edit.component';
 
 @NgModule({
   declarations: [
@@ -20,6 +22,8 @@ import { ConcertOverviewComponent } from './pages/concert-page/concert-overview/
     UserDetailComponent,
     AboutComponent,
     ConcertOverviewComponent,
+    ConcertDetailComponent,
+    ConcertEditComponent,
   ],
   imports: [
     BrowserModule,
