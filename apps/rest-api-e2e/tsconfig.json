@@ -1,21 +1,10 @@
 {
   "extends": "../../tsconfig.base.json",
-  "files": [],
-  "include": [],
-  "references": [
-    {
-      "path": "./tsconfig.app.json"
-    },
-    {
-      "path": "./tsconfig.spec.json"
-    },
-    {
-      "path": "./tsconfig.editor.json"
-    }
-  ],
   "compilerOptions": {
-    "target": "es2022",
-    "useDefineForClassFields": false,
+    "sourceMap": false,
+    "outDir": "../../dist/out-tsc",
+    "allowJs": true,
+    "types": ["cypress", "node"],
     "forceConsistentCasingInFileNames": true,
     "strict": true,
     "noImplicitOverride": true,
@@ -23,6 +12,7 @@
     "noImplicitReturns": true,
     "noFallthroughCasesInSwitch": true
   },
+  "include": ["src/**/*.ts", "src/**/*.js", "cypress.config.ts"],
   "angularCompilerOptions": {
     "enableI18nLegacyMessageIdFormat": false,
     "strictInjectionParameters": true,

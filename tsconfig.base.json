@@ -26,6 +26,12 @@
       ],
       "@concert-project/user": [
         "libs/user/src/index.ts"
+      ],
+      "stream": [
+        "./node_modules/stream-browserify"
+      ],
+      "os": [
+        "./node_modules/os-browserify/browser"
       ]
     }
   },
