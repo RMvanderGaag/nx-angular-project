@@ -8,13 +8,13 @@ import { User, UserService } from '@concert-project/user';
   styleUrls: ['./user-detail.component.css']
 })
 export class UserDetailComponent implements OnInit {
-  user: User | null = null;
+  user: User | undefined;
 
   constructor(private userService: UserService, private route: ActivatedRoute) { }
 
   ngOnInit(): void {
     this.route.paramMap.subscribe((p) => {
-      this.user = this.userService.getUserById(Number(p.get('id')));
+      this.userService.getUserById(p.get('id') || '').subscribe(u => this.user = u);
     })
   }
 

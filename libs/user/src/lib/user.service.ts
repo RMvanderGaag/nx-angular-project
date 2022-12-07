@@ -1,5 +1,7 @@
 import { Injectable } from '@angular/core';
 import { User } from '@concert-project/user';
+import { HttpClient, HttpParams } from "@angular/common/http";
+import { map, Observable } from "rxjs";
 
 @Injectable({
   providedIn: 'root'
@@ -43,29 +45,43 @@ export class UserService {
     }
   ]
 
-  constructor() {
+  constructor(private http: HttpClient) { }
+
+  getUsers(): Observable<User[]> {
+    return this.http.get<User[]>('http://localhost:3333/data-api/users').pipe(
+      map((users: User[]) => {
+        return users.map((user: User) => {
+          return {
+            ...user,
+            birthday: new Date(user.birthday)
+          }
+        })
+      })
+    );
   }
 
-  getUsers(): User[] {
-    console.log(this.users.length + " users returned")
-    return this.users;
+  getUserById(id: string): Observable<User> {
+    return this.http.get<User>('http://localhost:3333/data-api/users/' + id).pipe(
+      map((user: User) => {
+        return {
+          ...user,
+          birthday: new Date(user.birthday)
+        }
+      })
+    );
   }
 
-  getUserById(id: number): User {
-    return this.users.filter(x => x.id == id)[0];
+  deleteUser(id: string): Observable<any> {
+    console.log(id);
+    return this.http.delete('http://localhost:3333/data-api/users/' + id);
   }
 
-  deleteUser(id: number) {
-    var userToDelete = this.users.findIndex((u) => u.id == id)
-    this.users.splice(userToDelete, 1);
+  addUser(user: User): Observable<any> {
+    console.log(user);
+    return this.http.post('http://localhost:3333/data-api/users', user);
   }
 
-  addUser(user: User) {
-    this.users.push(user);
-  }
-
-  updateUser(user: User) {
-    let editUser = this.users.findIndex((x) => x.id == user.id);
-    this.users[editUser] = user;
+  updateUser(user: User): Observable<any> {
+    return this.http.put('http://localhost:3333/data-api/users/' + user.id, user);
   }
 } 

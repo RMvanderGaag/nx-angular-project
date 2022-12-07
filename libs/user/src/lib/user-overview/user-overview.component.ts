@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { User, UserService } from '@concert-project/user';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-user-overview',
@@ -7,16 +8,22 @@ import { User, UserService } from '@concert-project/user';
   styleUrls: ['./user-overview.component.css']
 })
 export class UserOverviewComponent implements OnInit {
-  users: User[] = [];
+  users: User[] | undefined;
 
   constructor(private userService: UserService) { }
 
   ngOnInit(): void {
-    this.users = this.userService.getUsers();
+    this.getAllUsers();
+  }
+
+  getAllUsers() {
+    this.userService.getUsers().subscribe(u => this.users = u);
   }
 
   deleteUser(id: number) {
-    this.userService.deleteUser(id)
+    this.userService.deleteUser(id.toString()).subscribe(response => {
+      this.getAllUsers();
+    });
   }
 
 }

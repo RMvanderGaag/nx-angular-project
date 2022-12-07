@@ -19,7 +19,7 @@ export class UserEditComponent implements OnInit {
       let id = params.get("id");
       if (id) {
         this.isEdit = true;
-        this.user = this.userService.getUserById(Number(id));
+        this.userService.getUserById(id).subscribe(u => this.user = u);
       } else {
         this.isEdit = false;
         this.user = {
@@ -39,17 +39,23 @@ export class UserEditComponent implements OnInit {
         ...userForm.value,
         birthday: new Date(userForm.value.birthday)
       }
-      this.userService.updateUser(editUser)
+      console.log(editUser);
+      this.userService.updateUser(editUser).subscribe(
+        response => {
+          this.router.navigate(['users']);
+        }
+      )
     } else {
       let newUser = {
-        id: this.userService.getUsers().length,
         ...userForm.value,
         birthday: new Date(userForm.value.birthday)
       };
-      this.userService.addUser(newUser);
+      this.userService.addUser(newUser).subscribe(
+        response => {
+          this.router.navigate(['users']);
+        }
+      );
     }
-
-    this.router.navigate(['users']);
   }
 
 }
