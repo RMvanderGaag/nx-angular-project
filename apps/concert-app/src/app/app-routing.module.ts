@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { AboutComponent } from './pages/about/about.component';
 import { ConcertDetailComponent, ConcertEditComponent, ConcertOverviewComponent } from '@concert-project/concert';
 import { UserDetailComponent, UserEditComponent, UserOverviewComponent } from '@concert-project/user';
+import { LoginComponent, RegisterComponent } from '@concert-project/auth';
 
 const routes: Routes = [
     { path: 'users', pathMatch: 'full', component: UserOverviewComponent },
@@ -15,7 +16,10 @@ const routes: Routes = [
     { path: 'concerts/:id', pathMatch: 'full', component: ConcertDetailComponent },
     { path: 'concerts/:id/edit', pathMatch: 'full', component: ConcertEditComponent },
 
-    { path: 'about', pathMatch: 'full', component: AboutComponent }
+    { path: 'about', pathMatch: 'full', component: AboutComponent },
+
+    { path: 'register', pathMatch: 'full', component: RegisterComponent },
+    { path: 'login', pathMatch: 'full', component: LoginComponent },
 ];
 
 @NgModule({

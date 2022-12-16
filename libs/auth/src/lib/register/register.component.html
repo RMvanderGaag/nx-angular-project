@@ -1,0 +1,17 @@
+<div class="container">
+    <h2 class="my-4">Register</h2>
+    <hr>
+    <form #registerForm="ngForm" (ngSubmit)="registerForm.form.valid && onSubmit(registerForm)">
+        <div class="form-group">
+            <label for="email">Email address</label>
+            <input type="email" class="form-control" id="email" name="email" aria-describedby="emailHelp"
+                placeholder="Enter email" #email="ngModel" [(ngModel)]="registerData!.email">
+        </div>
+        <div class="form-group mt-4">
+            <label for="password">Password</label>
+            <input type="password" class="form-control" id="password" name="password" placeholder="Password"
+                #password="ngModel" [(ngModel)]="registerData!.password">
+        </div>
+        <button type="submit" class="btn btn-primary mt-4">Submit</button>
+    </form>
+</div>

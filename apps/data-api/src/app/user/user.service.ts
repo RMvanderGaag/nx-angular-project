@@ -30,4 +30,12 @@ export class UserService {
   async updateUser(id: string, user: User): Promise<User> {
     return this.userModel.findOneAndUpdate({ id: id }, user, { new: true });
   }
+
+  async getSelf(id: string): Promise<User> {
+    const user = await this.userModel.findOne({ id: id });
+
+    if (user == null) return null;
+
+    return user
+  }
 }

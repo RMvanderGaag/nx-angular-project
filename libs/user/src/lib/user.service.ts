@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { User } from '@concert-project/user';
-import { HttpClient, HttpParams } from "@angular/common/http";
+import { HttpClient, HttpHeaders, HttpParams } from "@angular/common/http";
 import { map, Observable } from "rxjs";
 
 @Injectable({
@@ -61,14 +61,16 @@ export class UserService {
   }
 
   getUserById(id: string): Observable<User> {
-    return this.http.get<User>('http://localhost:3333/data-api/users/' + id).pipe(
-      map((user: User) => {
-        return {
-          ...user,
-          birthday: new Date(user.birthday)
-        }
-      })
-    );
+    return this.http.get<User>('http://localhost:3333/data-api/users/' + id);
+  }
+
+  getSelf(): Observable<User> {
+    const token = JSON.parse(localStorage.getItem('token') || '').token;
+    const headers = new HttpHeaders({
+      'Access-Control-Allow-Origin': '*',
+      Authorization: `${token}`,
+    });
+    return this.http.get<User>('http://localhost:3333/data-api/users/self', { headers });
   }
 
   deleteUser(id: string): Observable<any> {
