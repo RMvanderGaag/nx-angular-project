@@ -4,13 +4,19 @@ import { InjectModel } from '@nestjs/mongoose';
 import { User, UserDocument } from './user.schema';
 
 import { Injectable } from '@nestjs/common';
+import { Neo4jService } from '../neo4j/neo4j.service';
 
 @Injectable()
 export class UserService {
   constructor(
-    @InjectModel(User.name) private userModel: Model<UserDocument>) { }
+    @InjectModel(User.name) private userModel: Model<UserDocument>, private neo4j: Neo4jService) { }
 
   async getUsers(): Promise<User[]> {
+    const zooi = await this.neo4j.singleRead('MATCH (n) RETURN n');
+    zooi.records.forEach((record) => {
+      console.log(record.get('n'));
+    });
+
     return this.userModel.find();
   }
 
